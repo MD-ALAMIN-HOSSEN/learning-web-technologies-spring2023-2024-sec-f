@@ -6,12 +6,14 @@
     <title>FORM</title>
 </head>
 <body>
-    <form method="" action="" enctype="">
-       
-            Name:<br>
-             <input type="text" name="username" value="" /> <br>
+    <form method="" action="nametest.php" method="post" enctype="">
+        <fieldset>
+        <legend>Name</legend>
+           <br>
+             <input type="text" name="username" value="" /> <span class="error">* <?php echo $nameErr;?></span><br>
+             <hr>
              <input type="submit" name="submit" value="Submit" />
-
+        </fieldset>
     </form>
 </body>
 </html>
