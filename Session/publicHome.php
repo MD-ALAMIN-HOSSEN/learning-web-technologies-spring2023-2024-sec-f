@@ -6,20 +6,27 @@
   <title>X Company</title>
   <style>
     header, body, footer {
-      border: 1px solid #ddd; /* Adjust border style, width, and color here */
-      padding: 10px; /* Optional padding for spacing within sections */
-      margin-bottom: 10px; /* Optional margin for spacing between sections */
+      border: 1px solid #ddd; 
+      padding: 10px; 
+      margin-bottom: 10px; 
+    }
+    .flex-container {
+        display: flex;
+        justify-content: space-between;
     }
   </style>
 </head>
 <body>
-  <header>
+  <header >
+    <div class="flex-container">
     <h1>X Company</h1>
     <nav>
-      <a href="#">Home</a>
-      <a href="#">Login</a>
-      <a href="#">Registration</a>
+      <a href="publicHome.php">Home</a>
+      <a href="Login.php">Login</a>
+      <a href="Registration.php">Registration</a>
     </nav>
+    </div>
+
   </header>
   <body>
     <p>Welcome to X Company</p>
