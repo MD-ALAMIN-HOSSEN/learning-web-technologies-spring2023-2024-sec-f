@@ -3,35 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Forgot Password</title>
+  <title> Login </title>
+  <style>
+    header, body, footer {
+      border: 1px solid #ddd; 
+      padding: 10px; 
+      margin-bottom: 10px; 
+    }
+    .flex-container {
+        display: flex;
+        justify-content: space-between;
+    }
+  </style>
 </head>
-<body>
-  <header>
-    <div class="company-logo">
-      </div>
-    <div class="user-info">
-      <p>Home | Registration</p>
+<header >
+    <div class="flex-container">
+    <h1>X Company</h1>
+    <nav>
+      <a href="publicHome.php">Home</a>
+      <a href="Login.php">Login</a>
+      <a href="Registration.php">Registration</a>
+    </nav>
     </div>
   </header>
-  <main>
-    <section class="forgot-password">
-      <h2>FORGOT PASSWORD</h2>
-      <form action="process_forgot_password.php" method="post">
+
+<body>
+ <fieldset>
+    <legend>FORGOT PASSWORD</legend> 
+      <form action=".php" method="post">
         <div class="form-group">
-          <label for="email">Enter Email:</label>
-          <input type="email" name="email" id="email" required>
+          <label for="username">Enter Email:</label>
+          <input type="text" name="username" id="username" required>
         </div>
+        <hr>
         <div class="form-group">
           <button type="submit">Submit</button>
         </div>
       </form>
-      <p class="link">
-        <a href="#">Back to Login</a>
-      </p>
-    </section>
-  </main>
-  <footer>
+  </fieldset>  
+
+</body>
+<footer>
     <p>Copyright © 2017</p>
   </footer>
-</body>
 </html>

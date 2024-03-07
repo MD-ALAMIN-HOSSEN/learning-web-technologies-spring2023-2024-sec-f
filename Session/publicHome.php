@@ -16,8 +16,7 @@
     }
   </style>
 </head>
-<body>
-  <header >
+<header >
     <div class="flex-container">
     <h1>X Company</h1>
     <nav>
@@ -26,8 +25,8 @@
       <a href="Registration.php">Registration</a>
     </nav>
     </div>
-
   </header>
+
   <body>
     <p>Welcome to X Company</p>
   </body>

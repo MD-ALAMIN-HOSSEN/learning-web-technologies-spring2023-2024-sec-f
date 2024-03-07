@@ -4,23 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registration Form</title>
+  <style>
+    header, body, footer {
+      border: 1px solid #ddd; 
+      padding: 10px; 
+      margin-bottom: 10px; 
+    }
+    .flex-container {
+        display: flex;
+        justify-content: space-between;
+    }
+  </style>
 </head>
-<body>
-  <header>
-    <div class="company-logo">
-    </div>
-    <div class="user-info">
-      <p>Home | Login</p>
+<header >
+    <div class="flex-container">
+    <h1>X Company</h1>
+    <nav>
+      <a href="publicHome.php">Home</a>
+      <a href="Login.php">Login</a>
+      <a href="Registration.php">Registration</a>
+    </nav>
     </div>
   </header>
-  <main>
-    <section class="registration-form">
-      <h2>REGISTRATION</h2>
-      <form action="process_registration.php" method="post">
+<body>
+<fieldset>
+ <legend>REGISTRATION</legend>   
+      <form action=".php" method="post">
         <div class="form-group">
           <label for="name">Name:</label>
           <input type="text" name="name" id="name" required>
-        </div>
+        
         <div class="form-group">
           <label for="email">Email:</label>
           <input type="email" name="email" id="email" required>
@@ -52,10 +65,11 @@
           <button type="reset">Reset</button>
         </div>
       </form>
-    </section>
-  </main>
-  <footer>
+    
+  
+  </fieldset>
+</body>
+<footer>
     <p>Copyright © 2017</p>
   </footer>
-</body>
 </html>

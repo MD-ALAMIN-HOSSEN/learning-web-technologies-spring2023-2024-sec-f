@@ -3,25 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home Login Registration</title>
+  <title> Login </title>
+  <style>
+    header, body, footer {
+      border: 1px solid #ddd; 
+      padding: 10px; 
+      margin-bottom: 10px; 
+    }
+    .flex-container {
+        display: flex;
+        justify-content: space-between;
+    }
+  </style>
 </head>
-<body>
-  <header>
-    <div class="company-logo">
-      </div>
-    <div class="user-info">
-      <p>Home | Registration</p>
+<header >
+    <div class="flex-container">
+    <h1>X Company</h1>
+    <nav>
+      <a href="publicHome.php">Home</a>
+      <a href="Login.php">Login</a>
+      <a href="Registration.php">Registration</a>
+    </nav>
     </div>
   </header>
-  <main>
-    <section class="home-banner">
-      <h2>X Company</h2>
-      <p>Welcome to the X Company website, where we provide exceptional services...</p>
-      <a href="#" class="explore-more-button">Explore More</a>
-    </section>
-    <section class="login-section">
-      <h2>Login</h2>
-      <form action="process_login.php" method="post">
+
+<body>
+ <fieldset>
+    <legend>Login</legend> 
+      <form action=".php" method="post">
         <div class="form-group">
           <label for="username">Username:</label>
           <input type="text" name="username" id="username" required>
@@ -30,20 +39,20 @@
           <label for="password">Password:</label>
           <input type="password" name="password" id="password" required>
         </div>
-        <div class="form-group">
-          <a href="#">Forgot Password?</a>
-        </div>
+        <hr>
+        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+        <label for="vehicle1"> Remember Me</label><br>
         <div class="form-group">
           <button type="submit">Submit</button>
         </div>
+        <div class="form-group">
+          <a href="#">Forgot Password?</a>
+        </div>
       </form>
-      <p class="register-link">
-        New user? <a href="#">Register Here</a>
-      </p>
-    </section>
-  </main>
-  <footer>
+  </fieldset>  
+
+</body>
+<footer>
     <p>Copyright © 2017</p>
   </footer>
-</body>
 </html>
