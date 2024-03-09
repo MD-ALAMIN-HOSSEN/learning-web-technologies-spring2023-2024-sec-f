@@ -65,29 +65,29 @@
                 </ul>
             </nav>
         </div>
-        <div class="account-details div-main">
+        <div class=" div-main">
             <fieldset>
                 <legend><h2>Edit Profile</h2></legend>
-                <form>
-                    <div class="form-group">
+                <form action="editprofileCheck.php" method="post" >
+                    <div >
                         <label for="name">Name:</label>
                         <input type="text" name="name" id="name" required>
                     </div>
-                    <div class="form-group">
+                    <div >
                         <label for="email">Email:</label>
                         <input type="email" name="email" id="email" required>
                     </div>
-                    <div class="form-group">
+                    <div >
                         <label for="gender">Gender:</label>
                         <input type="radio" name="gender" id="male" value="male" required> Male
                         <input type="radio" name="gender" id="female" value="female" required> Female
                         <input type="radio" name="gender" id="other" value="other" required> Other
                     </div>
-                    <div class="form-group">
+                    <div >
                         <label for="date_of_birth">Date of Birth:</label>
                         <input type="date" name="date_of_birth" id="date_of_birth" required>
                     </div>
-                    <div class="form-group">
+                    <div >
                         <button type="submit">Submit</button>
                     </div>
                 </form>

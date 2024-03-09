@@ -69,7 +69,7 @@
             <fieldset>
                 <legend><h2>Change Profile Picture</h2></legend>
                 <section class="change-profile-picture">
-                    <form action="upload.php" method="post" enctype="multipart/form-data">
+                    <form action="fileCheck.php" method="post" enctype="multipart/form-data">
                     <br>       
                     <br>
                     <br> 
@@ -77,7 +77,7 @@
                             <div class="profile-pic">
                             </div>
                             <span>Choose File</span>
-                            <input type="file" name="fileToUpload" id="fileToUpload">
+                            <input type="file" name="myfile" value="">
                         </label>
                         <br>
                         <input type="submit" value="Submit" class="submit-button">

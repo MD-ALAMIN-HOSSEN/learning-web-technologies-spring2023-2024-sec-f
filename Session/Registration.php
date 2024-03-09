@@ -27,9 +27,11 @@
     </div>
   </header>
 <body>
+
+
 <fieldset>
  <legend>REGISTRATION</legend>   
-      <form action=".php" method="post">
+      <form action="registrationCheck.php" method="post">
         <div class="form-group">
           <label for="name">Name:</label>
           <input type="text" name="name" id="name" required>

@@ -30,7 +30,7 @@
 <body>
  <fieldset>
     <legend>Login</legend> 
-      <form action=".php" method="post">
+      <form action="loginCheck.php" method="post">
         <div class="form-group">
           <label for="username">Username:</label>
           <input type="text" name="username" id="username" required>
@@ -46,7 +46,7 @@
           <button type="submit">Submit</button>
         </div>
         <div class="form-group">
-          <a href="#">Forgot Password?</a>
+          <a href="ForgotPassword.php">Forgot Password?</a>
         </div>
       </form>
   </fieldset>  
