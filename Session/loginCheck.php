@@ -1,4 +1,7 @@
 <?php
+session_start();
+$username = $_REQUEST['username'];
+$password = $_REQUEST['password'];
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $validUsername = "bob";
@@ -9,6 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($inputUsername == $validUsername && $inputPassword == $validPassword) {
 
+        $_SESSION['flag'] = "true";
         header('Location: LoggedInDashboard.php');
         exit();
     } else {
