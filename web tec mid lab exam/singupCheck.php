@@ -45,6 +45,11 @@
            $error=true;
            
        }
+       if(!validateName($fnam,$allowedChars)){
+        echo "First Name has un valid inputs <br>";
+        $error=true;
+        
+    }
    
        if($lname==""){
          $err_lname="Give Last_Name<br>";
@@ -52,6 +57,11 @@
          $error=true;
          
      }
+     if(!validateName($lname,$allowedChars)){
+        echo "Last Name has un valid inputs <br>";
+        $error=true;
+        
+    }
 
      if($email==""){
         $err_email="Give mail<br>";
