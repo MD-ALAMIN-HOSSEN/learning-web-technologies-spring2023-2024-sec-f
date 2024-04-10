@@ -13,10 +13,84 @@
             return false;
         }
     }
+
+    function updateUser($id, $employeeName, $contactNo, $username, $password){
+        $con = dbConnection();
+        $sql = "UPDATE employee 
+            SET employee_name = '$employeeName', 
+                contact_no = '$contactNo', 
+                username = '$username',
+                password = '$password'
+            WHERE id_e = '$id'";
+            if(mysqli_query($con, $sql)){
+                return true; 
+            } else {
+                return false; 
+            }
+    }
+    function deleteUser($id) {
+        $con = dbConnection();
+        $id = mysqli_real_escape_string($con, $id);
+    
+        $sql = "DELETE FROM employee WHERE id_e = '$id'";
+    
+        if(mysqli_query($con, $sql)){
+            return true; // Return true if deletion is successful
+        } else {
+            return false; // Return false if deletion fails
+        }
+    }
+    function updateProduct($id, $productName, $quantity, $price){
+        $con = dbConnection();
+        $sql = "UPDATE product 
+            SET product_name = '$productName', 
+                quantity = '$quantity', 
+                price = '$price' 
+            WHERE product_id = '$id'";
+            if(mysqli_query($con, $sql)){
+                return true; 
+            } else {
+                return false; 
+            }
+    }
+    function deleteProduct($id) {
+        $con = dbConnection();
+        $id = mysqli_real_escape_string($con, $id);
+    
+        $sql = "DELETE FROM product WHERE product_id = '$id'";
+    
+        if(mysqli_query($con, $sql)){
+            return true; // Return true if deletion is successful
+        } else {
+            return false; // Return false if deletion fails
+        }
+    }
+    
+
+    function getProductById($id){
+        $con = dbConnection();
+        $id = mysqli_real_escape_string($con, $id); 
+        $sql = "SELECT * FROM product WHERE product_id = '$id'";
+        $result = mysqli_query($con, $sql);
+        $product = mysqli_fetch_assoc($result); 
+    
+        return $product;
+    }
+
+    function getUserById($id){
+        $con = dbConnection();
+        $id = mysqli_real_escape_string($con, $id); 
+        $sql = "SELECT * FROM employee WHERE id_e = '$id'";
+        $result = mysqli_query($con, $sql);
+        $user = mysqli_fetch_assoc($result); 
+    
+        return $user;
+    }
+    
     
     function getAllUser(){
         $con = dbConnection();
-        $sql = "select * from users";
+        $sql = "select * from employee";
         $result = mysqli_query($con, $sql);
         $users = [];
         
@@ -25,6 +99,20 @@
         }
         
         return $users;
+    }
+
+    
+    function getAllProducts(){
+        $con = dbConnection();
+        $sql = "select * from product";
+        $result = mysqli_query($con, $sql);
+        $products = [];
+        
+        while($row = mysqli_fetch_assoc($result)){
+            array_push($products, $row);
+        }
+        
+        return $products;
     }
     
     #$employee = ['employee_name'=> $employee_name,'contact_no'=>$contact_no, 'username'=>$username, 'password'=>$password];
@@ -49,11 +137,22 @@
         }
     }
 
-    function deleteUser($id){
-
+    function searchUsers($searchKeyword) {
+        $con = dbConnection();
+        // Construct SQL query to match partially to offer easy to search
+        $sql = "SELECT * FROM employee WHERE employee_name LIKE '%$searchKeyword%'";
+    
+        // Execute SQL query
+        $result = mysqli_query($con, $sql);
+    
+        $users = [];
+        // Fetch result rows as an associative array
+        while($row = mysqli_fetch_assoc($result)) {
+            $users[] = $row;
+        }
+    
+        return $users;
     }
+    
 
-    function updateUser($user){
-
-    }
 ?>
