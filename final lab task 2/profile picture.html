@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile picture</title>
+</head>
+
+<body>
+    <form method="post" action="#" enctype="" onsubmit="return validateForm()">
+        <fieldset>
+            <legend>Profile Picture</legend>
+            <br>
+            User ID <input type="text" name="userid" id="userId"> <br>
+            Picture
+            <button type="button" onclick="document.getElementById('picture').click()">Browse</button>
+            <input type="file" id="picture" style="display:none">
+            <hr>
+            <input type="submit" name="submit" value="Submit">
+            <!-- Add a placeholder for error messages -->
+            <div id="errorMessage" style="color: red;"></div>
+        </fieldset>
+    </form>
+    <script>
+        function validateForm() {
+            var userIdInput = document.getElementById("userId");
+            var pictureInput = document.getElementById("picture");
+            var errorMessage = document.getElementById("errorMessage");
+
+            if (userIdInput.value.trim() === "") {
+                errorMessage.innerText = "User ID cannot be empty.";
+                return false;
+            }
+            // check the input if its a number
+            if (!/^\d+$/.test(userIdInput.value)) {
+                errorMessage.innerText = "User ID must be a positive number.";
+                return false;
+            }
+          
+            // Check if a picture is selected
+            if (!pictureInput.files.length) {
+                errorMessage.innerText = "Please select a picture.";
+                pictureInput.focus();
+                return false;
+            }
+
+            return true; // Allow form submission if all validations pass
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FORM</title>
+</head>
+<body>
+    <form action="#" method="post" enctype="" onsubmit="return validateForm();">
+        <fieldset>   
+            <legend>Gender</legend>
+            <input type="radio" name="gender" value="male" id="maleRadio"/> Male
+            <input type="radio" name="gender" value="female" id="femaleRadio"/> Female
+            <input type="radio" name="gender" value="other" id="otherRadio"/> Other <br>
+            <span class="error" id="genderError"></span>
+            <hr>
+            <input type="submit" name="submit" value="Submit" />
+        </fieldset>
+    </form>
+
+    <script>
+        function validateForm() {
+            var maleRadio = document.getElementById("maleRadio");
+            var femaleRadio = document.getElementById("femaleRadio");
+            var otherRadio = document.getElementById("otherRadio");
+            var genderError = document.getElementById("genderError");
+
+            // Check if at least one is selected
+            if (!maleRadio.checked && !femaleRadio.checked && !otherRadio.checked) {
+                genderError.textContent = "Please select a gender";
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>

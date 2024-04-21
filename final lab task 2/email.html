@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>email</title>
+</head>
+<body>
+    <form action="#" method="post" enctype="" onsubmit="return validateForm();">
+        <fieldset>
+            <legend>Email</legend>
+            <br>
+            <input type="text" name="email" id="email" value=""> <span class="error" id="emailError"></span><br>
+            <hr>
+            <input type="submit" name="submit" value="Submit">
+        </fieldset>
+    </form>
+    <script>
+        function validateForm() {
+            var email = document.getElementById("email").value;
+            var emailError = document.getElementById("emailError");
+
+            // Check if the email is empty
+            if (email.trim() === "") {
+                emailError.textContent = "Email cannot be empty";
+                return false;
+            }
+
+            // Check if the email contains '@' and '.'
+            if (email.indexOf('@') === -1 || email.indexOf('.') === -1) {
+                emailError.textContent = "Invalid email format";
+                return false;
+            }
+
+            // Check if the '@' comes before the '.'
+            if (email.indexOf('@') > email.indexOf('.')) {
+                emailError.textContent = "Invalid email format";
+                return false;
+            }
+
+            // Clear the error message if validation passes
+            emailError.textContent = "";
+            return true;
+        }
+    </script>
+</body>
+</html>

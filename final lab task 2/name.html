@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM</title>
+</head>
+<body>
+    <form action="#" method="post" enctype="" >
+        <fieldset>
+            <legend>Name</legend>
+            <br>
+            <input type="text" name="username" id="username" value=""> <span class="error" id="nameError"> </span><br>
+            <hr>
+            <input type="button" name="submit" value="Submit" onclick="error();">
+        </fieldset>
+    </form>
+    <script>
+        function error() {
+            var result = validateForm();
+            var obj =document.getElementById("nameError");
+            obj.innerHTML =  result;
+        }
+
+        function validateForm() {
+            var username = document.getElementById("username").value;
+            var nameError = document.getElementById("nameError");
+
+            if (username.trim() === "") {
+                return "Name cannot be empty";
+            }
+
+            var words = username.trim().split(" ");
+            if (words.length < 2) {
+                return "Please enter at least two words";
+            }
+
+            for (var i = 0; i < username.length; i++) {
+                var char = username[i];
+                if (!((char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z') || char === '.' || char === '-' || char === ' ')) {
+                    return "Name can only contain letters, dots, dashes, and spaces";
+                }
+            }
+
+            return ""; 
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        .inner-table {
+            border: none;
+        }
+
+        .button-container {
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="#">
+        <table style="height: 500px;width:100%">
+            <th colspan="2"> PERSONAL PROFILE</th>
+            <tr>
+                <td>Name</td>
+                <td>
+                    <input type="text" name="username" id="username" value=""> <span class="error" id="nameError">
+                    </span><br>
+                </td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>
+                    <input type="text" name="email" id="email" value=""> <span class="error" id="emailError"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <input type="radio" name="gender" value="male" id="maleRadio" /> Male
+                    <input type="radio" name="gender" value="female" id="femaleRadio" /> Female
+                    <input type="radio" name="gender" value="other" id="otherRadio" /> Other <br>
+                    <span class="error" id="genderError"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Date of Birth</td>
+                <td>
+                    <table class="inner-table">
+                        <tr class="inner-table">
+                            <td class="inner-table">
+                                <label for="day">dd:</label> <br>
+                                <input type="number" id="day" name="day" min="1" max="31">/
+                            </td>
+                            <td class="inner-table">
+                                <label for="month">mm:</label><br>
+                                <input type="number" id="month" name="month" min="1" max="12">/
+                            </td>
+                            <td class="inner-table">
+                                <label for="year">yyyy:</label><br>
+                                <input type="number" id="year" name="year" min="1900" max="2024">
+                            </td>
+                        </tr>
+                    </table>
+                    <span class="error" id="dobError"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Blood Group</td>
+                <td>
+                    <select class="error" name="bloodGroup" id="bloodGroupSelect">
+                        <option value="0">Select Blood Group</option>
+                        <option value="A+">A+</option>
+                        <option value="B+">B+</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                    </select>
+                    
+                    <span id="ErrorBlood"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Degree</td>
+                <td>
+                    <input type="checkbox" name="degree" value="SSC" id="sscCheckbox"> SSC
+                    <input type="checkbox" name="degree" value="HSC" id="hscCheckbox"> HSC
+                    <input type="checkbox" name="degree" value="BSC" id="bscCheckbox"> BSC <br>
+                    <span id="ErrorDegree"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Photo</td>
+                <td>
+                    <button type="button" onclick="document.getElementById('picture').click()">Browse</button>
+                    <input type="file" id="picture" style="display:none">
+                    <div id="ErrorPhoto" style="color: red;"></div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"> <br></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="button-container">
+                    <button type="reset" name="submit" id="" onclick="validateForm();">submit</button>
+
+                    <button type="reset" name="reset" id="reset" >Reset</button>
+
+                </td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        function nameValidation() {
+
+            // name vaalidation
+            var username = document.getElementById("username").value;
+            var nameError = document.getElementById("nameError");
+
+            if (username.trim() === "") {
+                nameError.textContent = "Name cannot be empty";
+                return false;
+            }
+
+            var words = username.trim().split(" ");
+            if (words.length < 2) {
+                nameError.textContent = "Please enter at least two words";
+                return false;
+            }
+
+            for (var i = 0; i < username.length; i++) {
+                var char = username[i];
+                if (!((char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z') || char === '.' || char === '-' || char === ' ')) {
+                    nameError.textContent = "Name can only contain letters, dots, dashes, and spaces";
+                    return false;
+                }
+            }
+            nameError.textContent = "";
+            return true;
+
+
+        }
+        function emailValidation() {
+            // email validation
+            var email = document.getElementById("email").value;
+            var emailError = document.getElementById("emailError");
+
+            // Check if the email is empty
+            if (email.trim() === "") {
+                emailError.textContent = "Email cannot be empty";
+                return false;
+            }
+
+            // Check if the email contains '@' and '.'
+            if (email.indexOf('@') === -1 || email.indexOf('.') === -1) {
+                emailError.textContent = "Invalid email format";
+                return false;
+            }
+
+            // Check if the '@' comes before the '.'
+            if (email.indexOf('@') > email.indexOf('.')) {
+                emailError.textContent = "Invalid email format";
+                return false;
+            }
+
+            // Clear the error message if validation passes
+            emailError.textContent = "";
+            return true;
+        }
+        function gengerValidation() {
+            var maleRadio = document.getElementById("maleRadio");
+            var femaleRadio = document.getElementById("femaleRadio");
+            var otherRadio = document.getElementById("otherRadio");
+            var genderError = document.getElementById("genderError");
+
+            // Check if at least one is selected
+            if (!maleRadio.checked && !femaleRadio.checked && !otherRadio.checked) {
+                genderError.textContent = "Please select a gender";
+                return false;
+            }
+            genderError.textContent = "";
+            return true;
+        }
+        function bloodValidation(){
+            var bloodGroupSelect = document.getElementById("bloodGroupSelect"); 
+            var selectedIndex = bloodGroupSelect.selectedIndex; 
+
+            if (selectedIndex === 0) { // Check if the default option is selected
+                document.getElementById("ErrorBlood").textContent = "Please select a blood group.";
+                return false; 
+            }
+            document.getElementById("ErrorBlood").textContent = "";
+            return true;
+        }
+        function dateValidation (){
+            var day = document.getElementById("day").value;
+            var month = document.getElementById("month").value;
+            var year = document.getElementById("year").value;
+            var dobError = document.getElementById("dobError");
+
+            if (day.trim() === "" || month.trim() === "" || year.trim() === "") {
+                dobError.textContent = "Date of Birth cannot be empty";
+                return false;
+            }
+
+            day = parseInt(day);
+            month = parseInt(month);
+            year = parseInt(year);
+
+            if (day < 1 || day > 31 || month < 1 || month > 12 || year < 1900 || year > 2024) {
+                dobError.textContent = "Please enter valid date values";
+                return false;
+            }
+
+            // Clear the error message if validation passes
+            dobError.textContent = "";
+            return true;
+
+           
+        }
+        function degreeValidation(){
+            var checkedBoxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            if (checkedBoxes.length === 0) {
+                document.getElementById("ErrorDegree").innerText = "Please select at least one degree.";
+                return false; // Prevent form submission
+            }
+            document.getElementById("ErrorDegree").innerText = "";
+            return true; // Allow form submission if a checkbox is selected
+                
+        }
+        function photoValidation(){
+            
+            var pictureInput = document.getElementById("picture");
+            var errorMessage = document.getElementById("ErrorPhoto");
+
+
+            if (!pictureInput.files.length) {
+                errorMessage.innerText = "Please select a picture.";
+                pictureInput.focus();
+                return false;
+            }
+            errorMessage.innerText = "";
+            return true;
+        }
+
+        function validateForm() {
+            var a = nameValidation();
+            var b = emailValidation();
+            var c = gengerValidation();
+            var d = bloodValidation();
+            var e = dateValidation();
+            var e = degreeValidation();
+            var e = photoValidation();
+            
+
+            return false;
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

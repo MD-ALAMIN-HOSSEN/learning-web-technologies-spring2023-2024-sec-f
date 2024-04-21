@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>degree</title>
+</head>
+<body>
+    <form method="post" action="" onsubmit="return validateForm()">
+        <fieldset>
+            <legend>Degree</legend>
+            <input type="checkbox" name="degree" value="SSC" id="sscCheckbox"> SSC
+            <input type="checkbox" name="degree" value="HSC" id="hscCheckbox"> HSC
+            <input type="checkbox" name="degree" value="BSC" id="bscCheckbox"> BSC <br>
+            <span id="errorMessage"></span> 
+        </fieldset>
+            <hr>
+            <input type="submit" name="submit" value="Submit" />
+            
+        <br>
+    </form>
+
+    <script>
+        function validateForm() {
+            var checkedBoxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            if (checkedBoxes.length === 0) {
+                document.getElementById("errorMessage").innerText = "Please select at least one degree.";
+                return false; // Prevent form submission
+            }
+            return true; // Allow form submission if a checkbox is selected
+        }
+    </script>
+</body>
+</html>
